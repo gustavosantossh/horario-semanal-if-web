@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Horario Semanal</title>
+  </head>
+  <body>
+    <section class="w-screen h-screen p-10">
+      <section class="w-full">
+        <div class="flex justify-between">
+          <h1 class="text-3xl font-semibold col-span-12">
+            Cadastrar Horário Semanal
+          </h1>
+          <a
+            href="{{url_for("index")}}"
+            class="px-4 py-2 block rounded-md bg-black font-medium col-span-12 text-white cursor-pointer flex gap-2"
+          >
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+                />
+              </svg>
+            </span>
+            Voltar
+          </a>
+        </div>
+
+        <form
+          action="{{url_for('store')}}"
+          method="POST"
+          class="grid grid-cols-12 gap-4"
+        >
+          <div class="col-span-4">
+            <label for="turma" class="text-xl semi-bold block">Turma: </label>
+            <input
+              type="text"
+              name="turma"
+              class="bg-gray-100 w-100 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300 shadow-sm p-2"
+              placeholder="3°"
+              maxlength="1"
+              required
+            />
+          </div>
+
+          <div class="col-span-4">
+            <label for="curso" class="text-xl semi-bold block">Curso: </label>
+            <input
+              type="text"
+              name="curso"
+              class="bg-gray-100 w-100 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300 shadow-sm p-2"
+              placeholder="Informática"
+              required
+            />
+          </div>
+
+          <div class="col-span-4">
+            <label for="disciplina" class="text-xl semi-bold block"
+              >Disciplina:
+            </label>
+            <input
+              type="text"
+              name="disciplina"
+              class="bg-gray-100 w-100 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300 shadow-sm p-2"
+              placeholder="Química"
+              required
+            />
+          </div>
+
+          <div class="col-span-4">
+            <label for="dia_da_semana" class="text-xl semi-bold block"
+              >Dia da semana:
+            </label>
+            <input
+              type="text"
+              name="dia_da_semana"
+              class="bg-gray-100 w-100 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300 shadow-sm p-2"
+              placeholder="Terça"
+              required
+            />
+          </div>
+
+          <div class="col-span-4">
+            <label for="horario" class="text-xl semi-bold block"
+              >Horário:
+            </label>
+            <input
+              type="text"
+              name="horario"
+              class="bg-gray-100 w-100 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300 shadow-sm p-2"
+              placeholder="07:20"
+              required
+            />
+          </div>
+
+          <div class="col-span-4">
+            <label for="sala" class="text-xl semi-bold block">Sala: </label>
+            <input
+              type="text"
+              name="sala"
+              class="bg-gray-100 w-100 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300 shadow-sm p-2"
+              placeholder="12"
+              required
+            />
+          </div>
+
+          <div class="col-span-12">
+            <label for="professor" class="text-xl semi-bold block"
+              >Professor:
+            </label>
+            <input
+              type="text"
+              name="professor"
+              class="bg-gray-100 w-full rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300 shadow-sm p-2"
+              placeholder="nome do professor"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="px-4 py-2 block rounded-md bg-lime-400 hover:bg-lime-500 font-medium col-span-12 text-white cursor-pointer"
+          >
+            SALVAR
+          </button>
+        </form>
+      </section>
+      <!-- <section class="w-full py-4 overflow-auto">
+
+            <a href="{{url_for('create')}}" class="px-4 p-1 mb-3 text-center block w-50 rounded-md bg-lime-300 hover:bg-lime-400 font-medium">Adicionar Horário</a>
+
+        </section> -->
+    </section>
+  </body>
+</html>

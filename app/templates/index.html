@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Horario Semanal</title>
+</head>
+<body>
+    <section class=" w-fit h-fit mx-auto">
+        <section class="max-w-full">
+            <h1 class="text-3xl font-semibold text-center">Horário Semanal</h1>
+
+            <form action="/">
+                <label for="search" class="text-xl semi-bold block">Buscar: </label>
+                <input type="text" name="filtro" class="bg-gray-100 w-100 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-300 shadow-sm p-1">
+
+                <button type="submit" class="px-4 py-1 cursor-pointer rounded-md bg-sky-300 hover:bg-sky-400 font-medium">Pesquisar</button>
+            </form>
+        </section>
+        <section class="w-fit py-4 ">
+
+            <a href="{{url_for('create')}}" class="px-4 p-1 mb-3 text-center block w-50 rounded-md bg-lime-300 hover:bg-lime-400 font-medium">Adicionar Horário</a>
+
+            <div>
+
+                <table class="overflow-y-auto divide-y border border-collapse broder-gray-400">
+                    <thead>
+                        <tr>
+                            <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Turma</th>
+                            <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Curso</th>
+                            <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Disciplina</th>
+                            <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Dia da Semana</th>
+                            <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Horário</th>
+                            <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Sala</th>
+                            <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Professor</th>
+                            <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Editar</th>
+                            <th class="border border-gray-300 px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+
+                        {% for content in data %}
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-300 px-6 py-4 whitespace-nowrap">{{content[1]}}</td>
+                                <td class="border border-gray-300 px-6 py-4 whitespace-nowrap">{{content[2]}}</td>
+                                <td class="border border-gray-300 px-6 py-4 whitespace-nowrap">{{content[3]}}</td>
+                                <td class="border border-gray-300 px-6 py-4 whitespace-nowrap">{{content[4]}}</td>
+                                <td class="border border-gray-300 px-6 py-4 whitespace-nowrap">{{content[5]}}</td>
+                                <td class="border border-gray-300 px-6 py-4 whitespace-nowrap">{{content[6]}}</td>
+                                <td class="border border-gray-300 px-6 py-4 whitespace-nowrap">{{content[7]}}</td>
+                                
+                                <td class="border border-gray-300 px-6 py-4 whitespace-nowrap">
+                                    <a href="{{url_for('editar', id=content[0])}}" class="text-blue-600 hover:text-blue-800 font-medium cursor-pointer">Editar</a>
+                                </td>
+                                <td class="border border-gray-300 px-6 py-4 whitespace-nowrap">
+                                    <button class="text-red-600 hover:text-red-800 font-medium cursor-pointer">Excluir</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    </section>
+</body>
+</html>
