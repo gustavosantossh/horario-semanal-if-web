@@ -61,12 +61,13 @@ class Horario:
             print("Error: ", e)
             return False
             
-    def delete(self, id):
+    def delete(self, id) -> bool:
         try:
             query = f"DELETE FROM horarios WHERE id = ?"
 
             self.cursor.execute(query, (id,))
             self.conn.commit()
-            return
-        except:
-            pass
+            return True
+        except Exception as e:
+            print(f"erro: {e}")
+            return False

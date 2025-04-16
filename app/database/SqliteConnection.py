@@ -10,13 +10,13 @@ class SqliteConnection():
         
     def tables(self):
         # TABELA DE USUARIOS
-        self.cursor.execute("""
-            CREATE TABLE IF NOT EXISTS user (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            email VARCHAR(255) UNIQUE,
-            senha VARCHAR(255)
-        )             
-        """)
+        # self.cursor.execute("""
+        #     CREATE TABLE IF NOT EXISTS user (
+        #     id INTEGER PRIMARY KEY AUTOINCREMENT,
+        #     email VARCHAR(255) UNIQUE,
+        #     senha VARCHAR(255)
+        # )             
+        # """)
         
         # TABELA HORARIOS
         self.cursor.execute("""

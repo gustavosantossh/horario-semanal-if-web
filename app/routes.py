@@ -5,12 +5,13 @@ class Route:
     def __init__(self, app):
         self.rotas(app)
         self.Horario = Horario()
+        self.data = [] 
         
     def rotas(self, app):
         @app.route("/")
         def index():
-            data = self.Horario.searchAll()
-            return render_template("index.html", data=data)
+            self.data = self.Horario.searchAll()
+            return render_template("index.html", data=self.data)
         
         @app.route("/create")
         def create():
@@ -40,8 +41,28 @@ class Route:
         
         @app.route("/editar/<int:id>")
         def editar(id):
-            data = self.Horario.findHorarioEdit(id)
-            return render_template("editar.html", data=data)
+            self.data = self.Horario.findHorarioEdit(id)
+            return render_template("editar.html", data=self.data)
+        
+        @app.route("/deletar/<int:id>")
+        def deletar(id):
+            response = self.Horario.delete(id)
+            
+            if response:
+                return redirect(url_for('index'))
+            else:
+                return "Error ao deletar"
+            
+        @app.route("/filtro")
+        def filtro():
+            filtro = request.args.get('search')
+            
+            if filtro:
+                self.data = self.Horario.searchHorario(filtro)
+            else:
+                self.data = self.Horario.searchAll()
+            
+            return render_template("index.html", data=self.data)
         
         @app.route("/update/<int:id>", methods=['POST'])
         def update(id):
